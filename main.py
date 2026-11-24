@@ -35,6 +35,7 @@ def main():
     assert 1 <= len(BIO) <= 180, "entry must be 1-180 characters"
     assert "\n" not in BIO, "entry must be a single line"
     assert "\r" not in BIO, "entry must be a single line"
+    assert all(c.isprintable() for c in BIO), "entry must contain only printable characters"
     assert BIO.strip() == BIO, "entry must not start or end with whitespace"
     data = BIO.encode("utf-8")
     os.makedirs("/output", exist_ok=True)
