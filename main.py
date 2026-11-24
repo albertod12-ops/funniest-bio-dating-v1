@@ -25,6 +25,8 @@ Why this line, against the judge's brief, in order:
 
 import os
 
+MAX_LEN = 180
+
 BIO = "Swipe right if you can prove you're not a robot. I've been catfished by a toaster twice."
 
 OUTPUT_PATH = "/output/entry.txt"
@@ -32,7 +34,7 @@ OUTPUT_PATH = "/output/entry.txt"
 
 def main():
     os.umask(0o022)
-    assert 1 <= len(BIO) <= 180, "entry must be 1-180 characters"
+    assert 1 <= len(BIO) <= MAX_LEN, "entry must be 1-180 characters"
     assert "\n" not in BIO, "entry must be a single line"
     assert "\r" not in BIO, "entry must be a single line"
     assert all(c.isprintable() for c in BIO), "entry must contain only printable characters"
